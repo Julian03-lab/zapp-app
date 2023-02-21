@@ -1,6 +1,8 @@
 import { View, Text, TouchableHighlight } from 'react-native'
 import React from 'react'
 import { useNavigation } from '@react-navigation/native'
+import example from '../../api/example.json'
+import Card from '../../components/card'
 
 export default function HomeScreen () {
   const navigator = useNavigation()
@@ -22,9 +24,14 @@ export default function HomeScreen () {
           <Text>
             New Card
           </Text>
-
         </TouchableHighlight>
       </View>
+      <View>
+      {example.map((card) => (
+          <Card key={card.id} category={card.category} question={card.question} answer={card.answer} />
+      ))}
+      </View>
+
     </View>
   )
 }
