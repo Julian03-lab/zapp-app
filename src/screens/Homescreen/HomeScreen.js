@@ -1,37 +1,30 @@
-import { View, Text, TouchableHighlight } from 'react-native'
+import { View, StatusBar, SafeAreaView } from 'react-native'
 import React from 'react'
-import { useNavigation } from '@react-navigation/native'
+// import { useNavigation } from '@react-navigation/native'
 import example from '../../api/example.json'
-import Card from '../../components/card'
+import Card from '../../components/StudyScreen/card'
+import ActualSession from '../../components/StudyScreen/ActualSession'
+
+const data = {
+  id: 1,
+  category: {
+    name: 'Physics',
+    color: 'red'
+  },
+  question: 'What is the name of the force that keeps the planets in orbit around the sun?',
+  answer: 'Gravity',
+  status: 'unanswered'
+}
 
 export default function HomeScreen () {
-  const navigator = useNavigation()
+  // const navigator = useNavigation()
   return (
-    <View
-    style={{ flex: 1, justifyContent: 'center', alignItems: 'center', paddingHorizontal: 35, backgroundColor: '#000' }}
-    >
-      <Text
-      style={{ fontSize: 30, color: '#c9c', fontWeight: 'bold' }}
-      >
-        HomeScreen
-      </Text>
-      <View style={{ display: 'flex', flexDirection: 'column', width: '100%', marginTop: 16 }}>
-        <TouchableHighlight
-        onPress={() => navigator.navigate('StackScreen')}
-        style={{ alignItems: 'center', backgroundColor: '#DDDDDD', padding: 10, marginBottom: 12 }}
-        activeOpacity={0.7}
-        underlayColor="#ccc">
-          <Text>
-            New Card
-          </Text>
-        </TouchableHighlight>
-      </View>
-      <View>
-      {example.map((card) => (
-          <Card key={card.id} category={card.category} question={card.question} answer={card.answer} />
-      ))}
+    <SafeAreaView className="flex-1 w-full bg-white px-9 items-center justify-evenly" style={{ paddingTop: StatusBar.currentHeight }}>
+      <ActualSession/>
+      <View className="w-full">
+        <Card category={data.category} question={data.question} answer={data.answer}/>
       </View>
 
-    </View>
+    </SafeAreaView>
   )
 }
