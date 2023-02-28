@@ -1,12 +1,15 @@
 /* eslint-disable camelcase */
 import React from 'react'
+import { Text, View } from 'react-native'
+
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
+import { createNativeStackNavigator } from '@react-navigation/native-stack'
+
 import HomeScreen from './screens/Homescreen/HomeScreen'
 import SettingScreen from './screens/Settings/Settings'
-import StackScreen from './screens/StackScreen'
-import { FontAwesome5 } from '@expo/vector-icons'
-import { createNativeStackNavigator } from '@react-navigation/native-stack'
+import Collections from './screens/Collections/Collections'
+import StudyScreen from './screens/StudyScreen/StudyScreen'
 
 import {
   useFonts,
@@ -17,42 +20,52 @@ import {
   LibreFranklin_800ExtraBold
 } from '@expo-google-fonts/libre-franklin'
 import { SignikaNegative_400Regular, SignikaNegative_500Medium, SignikaNegative_600SemiBold, SignikaNegative_700Bold } from '@expo-google-fonts/signika-negative'
-import { Text, View } from 'react-native'
-import Collections from './screens/Collections/Collections'
+import { TabCollection, TabHome } from './assets/icons/icons-list'
+import { useColorScheme } from 'nativewind'
 
 const Tab = createBottomTabNavigator()
-const HomeStackNavigator = createNativeStackNavigator()
+const CollectionsStack = createNativeStackNavigator()
 
 function MyStack () {
   return (
-    <HomeStackNavigator.Navigator initialRouteName="HomeScreen">
-      <HomeStackNavigator.Screen
-        name="HomeScreen"
-        component={HomeScreen}
+    <CollectionsStack.Navigator initialRouteName="Collections" >
+      <CollectionsStack.Screen
+        name="CollectionsStack"
+        component={Collections}
         options={{ headerShown: false }}
       />
-      <HomeStackNavigator.Screen name="StackScreen" component={StackScreen} />
-    </HomeStackNavigator.Navigator>
+      <CollectionsStack.Screen name="StudyScreen" component={StudyScreen} options={{ headerShown: false }}/>
+    </CollectionsStack.Navigator>
   )
 }
 
 function MyTabs () {
+  const { colorScheme } = useColorScheme()
   return (
-    <Tab.Navigator initialRouteName="Home">
+    <Tab.Navigator initialRouteName="Home"
+      screenOptions={({ route }) => ({
+        tabBarActiveTintColor: '#8BC34A',
+        tabBarInactiveTintColor: 'gray',
+        tabBarStyle: {
+          backgroundColor: colorScheme === 'dark' ? '#333333' : '#f5f5f5'
+        },
+        tabBarShowLabel: false
+      })}
+    >
       <Tab.Screen
-        name="Home"
-        component={MyStack}
+        name="HomeScreen"
+        component={HomeScreen}
         options={{
           tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="home" size={size} color={color} />
+            <TabHome color={color} />
           ),
           headerShown: false
         }}
       />
       <Tab.Screen name="Settings" component={SettingScreen} />
-      <Tab.Screen name="Collections" component={Collections} options={{
-        tabBarIcon: ({ color, size }) => (
-            <FontAwesome5 name="home" size={size} color={color} />
+      <Tab.Screen name="Collections" component={MyStack} options={{
+        tabBarIcon: ({ color }) => (
+            <TabCollection color={color} />
         ),
         headerShown: false
       }}/>

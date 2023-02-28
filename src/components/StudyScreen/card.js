@@ -7,9 +7,7 @@ export default function Card ({ category, question, answer }) {
   const [showAnswer, setShowAnswer] = useState(false)
   return (
     <View
-      className="bg-light-gray w-full py-4 px-3 rounded-xl justify-between"
-      style={{ elevation: 1 }}
-    >
+      className="bg-light-gray dark:bg-dark-gray w-full py-4 px-3 rounded-xl justify-between shadow-lg shadow-black">
       <View className="flex-col items-center gap-y-4">
         <View
           className={'w-full flex rounded-xl h-4'}
@@ -18,7 +16,7 @@ export default function Card ({ category, question, answer }) {
       </View>
       <View className="h-72" style={{ flexDirection: 'row', alignItems: 'center' }}>
       <ScrollView>
-        <Text style={{ fontFamily: 'SignikaNegative_700Bold' }} className="py-1 text-center text-xl text-dark-gray w-full h-full">
+        <Text className="font-LibreFranklinSemiBold py-1 text-center text-xl text-dark-gray dark:text-white w-full h-full">
           {!showAnswer ? question : answer}
         </Text>
       </ScrollView>

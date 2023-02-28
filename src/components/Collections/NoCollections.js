@@ -7,7 +7,7 @@ export default function NoCollections () {
     <View className="flex-1 items-center justify-evenly ">
       <EmptyBox width={321} height={239} />
       <View>
-        <Text className="font-SignikaNegativeBold text-5xl text-dark-gray text-center">
+        <Text className="font-SignikaNegativeBold text-5xl text-dark-gray dark:text-white text-center">
           AUN NO HAY BARAJAS :(
         </Text>
         <TouchableHighlight>
@@ -19,4 +19,3 @@ export default function NoCollections () {
     </View>
   )
 }
-// className='scale-50'
