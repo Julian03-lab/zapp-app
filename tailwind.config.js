@@ -14,8 +14,15 @@ module.exports = {
         black: '#222222'
       },
       fontFamily: {
-        'Libre-Franklin': ['Libre Franklin', 'sans-serif'],
-        'Signika-Negative': ['Signika Negative', 'sans-serif']
+        LibreFranklinRegular: 'LibreFranklin_400Regular',
+        LibreFranklinMedium: 'LibreFranklin_500Medium',
+        LibreFranklinSemiBold: 'LibreFranklin_600SemiBold',
+        LibreFranklinBold: 'LibreFranklin_700Bold',
+        LibreFranklinExtraBold: 'LibreFranklin_800ExtraBold',
+        SignikaNegativeRegular: 'SignikaNegative_400Regular',
+        SignikaNegativeMedium: 'SignikaNegative_500Medium',
+        SignikaNegativeSemiBold: 'SignikaNegative_600SemiBold',
+        SignikaNegativeBold: 'SignikaNegative_700Bold'
       }
     }
   },
