@@ -23,6 +23,9 @@ module.exports = {
         SignikaNegativeMedium: 'SignikaNegative_500Medium',
         SignikaNegativeSemiBold: 'SignikaNegative_600SemiBold',
         SignikaNegativeBold: 'SignikaNegative_700Bold'
+      },
+      boxShadow: {
+        button: '4px 4px 0px'
       }
     }
   },

@@ -2,9 +2,9 @@
   "expo": {
     "name": "zapp",
     "slug": "zapp",
+    "icon": "./src/assets/icon.png",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./src/assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./src/assets/splash.png",
@@ -22,7 +22,6 @@
     },
     "android": {
       "adaptiveIcon": {
-        "icon": "./src/assets/icon.png",
         "foregroundImage": "./src/assets/adaptive-icon.png",
         "backgroundColor": "#f5f5f5"
       }

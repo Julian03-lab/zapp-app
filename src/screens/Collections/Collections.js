@@ -5,7 +5,7 @@ import IndividualCollection from '../../components/Collections/IndividualCollect
 import NoCollections from '../../components/Collections/NoCollections'
 
 export default function Collections ({ navigation }) {
-  const userCollections = ['']
+  const userCollections = []
   return (
     <SafeAreaView
       className="bg-white dark:bg-black flex-1 w-full px-4 py-8"
