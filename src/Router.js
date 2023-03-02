@@ -10,6 +10,7 @@ import HomeScreen from './screens/Homescreen/HomeScreen'
 import SettingScreen from './screens/Settings/Settings'
 import Collections from './screens/Collections/Collections'
 import StudyScreen from './screens/StudyScreen/StudyScreen'
+import LoginScreen from './screens/Login/LoginScreen'
 
 import {
   useFonts,
@@ -22,9 +23,11 @@ import {
 import { SignikaNegative_400Regular, SignikaNegative_500Medium, SignikaNegative_600SemiBold, SignikaNegative_700Bold } from '@expo-google-fonts/signika-negative'
 import { TabCollection, TabHome } from './assets/icons/icons-list'
 import { useColorScheme } from 'nativewind'
+import useAuth from './utils/hooks/useAuth'
 
 const Tab = createBottomTabNavigator()
 const CollectionsStack = createNativeStackNavigator()
+const AuthStack = createNativeStackNavigator()
 
 function MyStack () {
   return (
@@ -36,6 +39,14 @@ function MyStack () {
       />
       <CollectionsStack.Screen name="StudyScreen" component={StudyScreen} options={{ headerShown: false }}/>
     </CollectionsStack.Navigator>
+  )
+}
+
+function AuthStackScreen () {
+  return (
+    <AuthStack.Navigator initialRouteName="Home">
+      <AuthStack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
+    </AuthStack.Navigator>
   )
 }
 
@@ -74,6 +85,7 @@ function MyTabs () {
 }
 
 export default function Router () {
+  const user = useAuth()
   const [fontsLoaded] = useFonts({
     LibreFranklin_400Regular,
     LibreFranklin_500Medium,
@@ -94,7 +106,7 @@ export default function Router () {
   }
   return (
     <NavigationContainer>
-      <MyTabs />
+      {user ? <MyTabs /> : <AuthStackScreen />}
     </NavigationContainer>
   )
 }

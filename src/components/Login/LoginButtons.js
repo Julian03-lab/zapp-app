@@ -2,6 +2,7 @@ import { View } from 'react-native'
 import React from 'react'
 import CustomLoginButton from './CustomLoginButton'
 import { FacebookIcon, GoogleIcon } from '../../assets/icons/icons-list'
+import LoginWithGoogle from '../../utils/login/googleLogin'
 
 export default function LoginButtons () {
   return (
@@ -16,7 +17,7 @@ export default function LoginButtons () {
       <CustomLoginButton
         icon={<GoogleIcon/>}
         text="Continue With Google"
-        onPress={() => console.log('Registrarse')}
+        onPress={LoginWithGoogle}
         bg="#FFFFFF"
         color="rgba(0, 0, 0, 0.54)"
       />
