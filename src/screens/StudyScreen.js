@@ -1,8 +1,8 @@
 import { View, StatusBar, SafeAreaView } from 'react-native'
 import React from 'react'
-import Card from '../../components/StudyScreen/card'
-import ActualSession from '../../components/StudyScreen/ActualSession'
-import Header from '../../components/StudyScreen/Header'
+import Card from '../components/StudyScreen/card'
+import ActualSession from '../components/StudyScreen/ActualSession'
+import Header from '../components/StudyScreen/Header'
 
 const data = {
   id: 1,

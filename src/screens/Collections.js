@@ -1,8 +1,8 @@
 import { SafeAreaView, ScrollView, StatusBar, View } from 'react-native'
 import React from 'react'
-import Title from '../../components/Collections/Title'
-import IndividualCollection from '../../components/Collections/IndividualCollection'
-import NoCollections from '../../components/Collections/NoCollections'
+import Title from '../components/Collections/Title'
+import IndividualCollection from '../components/Collections/IndividualCollection'
+import NoCollections from '../components/Collections/NoCollections'
 
 export default function Collections ({ navigation }) {
   const userCollections = []

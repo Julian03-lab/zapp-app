@@ -97,3 +97,33 @@ export const FacebookIcon = (props) => (
   />
 </Svg>
 )
+
+export const BackArrow = (props) => (
+  <Svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} {...props}>
+    <Path fill="none" d="M0 0h24v24H0z" />
+    <Path
+      fill="currentColor"
+      d="m12 20-8-8 8-8 1.425 1.4-5.6 5.6H20v2H7.825l5.6 5.6L12 20Z"
+    />
+  </Svg>
+)
+
+export const EmailIcon = (props) => (
+  <Svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} {...props} className='fill-black dark:fill-white'>
+    <Path fill="none" d="M0 0h24v24H0z" />
+    <Path
+      fill="currentColor"
+      d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"
+    />
+  </Svg>
+)
+
+export const PasswordIcon = (props) => (
+  <Svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} {...props}>
+    <Path fill="none" d="M0 0h24v24H0z" />
+    <Path
+      fill="currentColor"
+      d="M12 17a2 2 0 0 0 2-2 2 2 0 0 0-2-2 2 2 0 0 0-2 2 2 2 0 0 0 2 2m6-9a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2h1V6a5 5 0 0 1 5-5 5 5 0 0 1 5 5v2h1m-6-5a3 3 0 0 0-3 3v2h6V6a3 3 0 0 0-3-3Z"
+    />
+  </Svg>
+)

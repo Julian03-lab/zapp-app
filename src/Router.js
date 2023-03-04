@@ -1,16 +1,18 @@
 /* eslint-disable camelcase */
-import React from 'react'
-import { Text, View } from 'react-native'
+import React, { useEffect } from 'react'
+import { Text, View, useColorScheme } from 'react-native'
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { NavigationContainer } from '@react-navigation/native'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 
-import HomeScreen from './screens/Homescreen/HomeScreen'
-import SettingScreen from './screens/Settings/Settings'
-import Collections from './screens/Collections/Collections'
-import StudyScreen from './screens/StudyScreen/StudyScreen'
-import LoginScreen from './screens/Login/LoginScreen'
+import HomeScreen from './screens/HomeScreen'
+import SettingScreen from './screens/Settings'
+import Collections from './screens/Collections'
+import StudyScreen from './screens/StudyScreen'
+import LoginScreen from './screens/LoginScreen'
+import SignInScreen from './screens/SignInScreen'
+import SignUpScreen from './screens/SignUpScreen'
 
 import {
   useFonts,
@@ -22,7 +24,7 @@ import {
 } from '@expo-google-fonts/libre-franklin'
 import { SignikaNegative_400Regular, SignikaNegative_500Medium, SignikaNegative_600SemiBold, SignikaNegative_700Bold } from '@expo-google-fonts/signika-negative'
 import { TabCollection, TabHome } from './assets/icons/icons-list'
-import { useColorScheme } from 'nativewind'
+import { useColorScheme as useColorSchemeNativeWind } from 'nativewind'
 import useAuth from './utils/hooks/useAuth'
 
 const Tab = createBottomTabNavigator()
@@ -44,14 +46,16 @@ function MyStack () {
 
 function AuthStackScreen () {
   return (
-    <AuthStack.Navigator initialRouteName="Home">
+    <AuthStack.Navigator initialRouteName="Login">
       <AuthStack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
+      <AuthStack.Screen name="SignIn" component={SignInScreen} options={{ headerShown: false }}/>
+      <AuthStack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }}/>
     </AuthStack.Navigator>
   )
 }
 
 function MyTabs () {
-  const { colorScheme } = useColorScheme()
+  const { colorScheme } = useColorSchemeNativeWind()
   return (
     <Tab.Navigator initialRouteName="Home"
       screenOptions={({ route }) => ({
@@ -85,6 +89,9 @@ function MyTabs () {
 }
 
 export default function Router () {
+  const { setColorScheme } = useColorSchemeNativeWind()
+  const systemColor = useColorScheme()
+
   const user = useAuth()
   const [fontsLoaded] = useFonts({
     LibreFranklin_400Regular,
@@ -97,6 +104,11 @@ export default function Router () {
     SignikaNegative_600SemiBold,
     SignikaNegative_700Bold
   })
+
+  useEffect(() => {
+    systemColor && setColorScheme(systemColor)
+  }, [])
+
   if (!fontsLoaded) {
     return (
       <View>

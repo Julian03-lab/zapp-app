@@ -1,25 +1,20 @@
 import { View } from 'react-native'
 import React from 'react'
-import CustomLoginButton from './CustomLoginButton'
-import { FacebookIcon, GoogleIcon } from '../../assets/icons/icons-list'
-import LoginWithGoogle from '../../utils/login/googleLogin'
+import PrimaryButton from '../PrimaryButton'
+import SecondaryButton from '../SecondaryButton'
+import { useNavigation } from '@react-navigation/native'
 
 export default function LoginButtons () {
+  const navigation = useNavigation()
   return (
     <View>
-      <CustomLoginButton
-        icon={<FacebookIcon/>}
-        text="Continue With Facebook"
-        onPress={() => console.log('Iniciar Sesión')}
-        bg="#1877F2"
-        color="#FFFFFF"
+      <PrimaryButton
+        text="Iniciar Sesión"
+        onPress={() => navigation.navigate('SignIn')}
       />
-      <CustomLoginButton
-        icon={<GoogleIcon/>}
-        text="Continue With Google"
-        onPress={LoginWithGoogle}
-        bg="#FFFFFF"
-        color="rgba(0, 0, 0, 0.54)"
+      <SecondaryButton
+        text="Registrarse"
+        onPress={() => navigation.navigate('SignUp')}
       />
     </View>
   )

@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, getRedirectResult, signInWithRedirect } from 'firebase/auth'
+import { GoogleAuthProvider, signInWithRedirect } from 'firebase/auth'
 import { auth } from '../../api/firebase/firebaseInit'
 
 export default function LoginWithGoogle () {
