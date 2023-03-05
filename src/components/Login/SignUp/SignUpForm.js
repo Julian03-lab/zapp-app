@@ -1,37 +1,71 @@
-import { View, TextInput, TouchableHighlight, Text } from 'react-native'
+import { View, TextInput } from 'react-native'
 import React, { useState, useRef } from 'react'
-import { EmailIcon, PasswordIcon } from '../../../assets/icons/icons-list'
-import { useColorScheme } from 'nativewind'
 import PasswordReveal from '../../PasswordReveal'
 import PrimaryButton from '../../PrimaryButton'
-import loginUser from '../../../utils/login/loginUser'
+import {
+  EmailIcon,
+  PasswordIcon,
+  UserIcon
+} from '../../../assets/icons/icons-list'
+import { useColorScheme } from 'nativewind'
+import createUser from '../../../utils/login/createUser'
 import { useNavigation } from '@react-navigation/native'
 
-export default function SignInForm () {
+export default function SignUpForm () {
   const navigation = useNavigation()
   const { colorScheme } = useColorScheme()
   const [values, setValues] = useState({
     email: '',
+    name: '',
     password: ''
   })
   const [hidePassword, setHidePassword] = useState(true)
+  const emailRef = useRef()
   const passwordRef = useRef()
 
   return (
     <>
       <View className="w-full items-center">
-        <View className="flex-row py-2 px-3 w-full h-12 dark:bg-black border dark:border-light-gray rounded-xl items-center">
+        <View className="flex-row py-2 px-3 w-full dark:bg-black border dark:border-light-gray rounded-xl items-center mb-3">
+          <UserIcon
+            style={{ color: colorScheme === 'dark' ? 'white' : 'black' }}
+          />
+          <View className="w-0.5 h-full bg-accent mx-2" />
+          <TextInput
+            returnKeyType="next"
+            onSubmitEditing={() => {
+              emailRef.current.focus()
+            }}
+            blurOnSubmit={false}
+            className="dark:text-white dark:placeholder:text-white w-full"
+            onChangeText={(value) =>
+              setValues({
+                ...values,
+                name: value
+              })
+            }
+            value={values.name}
+            placeholder="e.g., Jhon Doe"
+            placeholderTextColor={
+              colorScheme === 'dark'
+                ? 'rgba(255,255,255,0.5)'
+                : 'rgba(9,9,9,0.5)'
+            }
+          />
+        </View>
+        <View className="flex-row py-2 px-3 w-full dark:bg-black border dark:border-light-gray rounded-xl items-center">
           <EmailIcon
             style={{ color: colorScheme === 'dark' ? 'white' : 'black' }}
           />
           <View className="w-0.5 h-full bg-accent mx-2" />
           <TextInput
-            className="dark:text-white dark:placeholder:text-white"
+            ref={emailRef}
             returnKeyType="next"
             onSubmitEditing={() => {
               passwordRef.current.focus()
             }}
             blurOnSubmit={false}
+            className="dark:text-white dark:placeholder:text-white w-full"
             onChangeText={(value) =>
               setValues({
                 ...values,
@@ -48,7 +82,7 @@ export default function SignInForm () {
             keyboardType="email-address"
           />
         </View>
-        <View className="flex-row py-2 px-3 w-full h-12 dark:bg-black border dark:border-light-gray rounded-xl items-center my-3">
+        <View className="flex-row py-2 px-3 w-full dark:bg-black border dark:border-light-gray rounded-xl items-center my-3">
           <PasswordIcon
             style={{ color: colorScheme === 'dark' ? 'white' : 'black' }}
           />
@@ -61,9 +95,9 @@ export default function SignInForm () {
                 password: value
               })
             }
-            className="dark:text-white dark:placeholder:text-white"
+            className="dark:text-white dark:placeholder:text-white w-full"
             value={values.password}
-            placeholder="e.g., ***********"
+            placeholder="Al menos 8 caracteres"
             placeholderTextColor={
               colorScheme === 'dark'
                 ? 'rgba(255,255,255,0.5)'
@@ -78,23 +112,8 @@ export default function SignInForm () {
           togglePassword={setHidePassword}
           color={colorScheme === 'dark' ? 'white' : 'black'}
         />
-        <TouchableHighlight
-          onPress={() => console.log('Pressed')}
-          activeOpacity={0.6}
-          underlayColor="#transparent"
-          className="my-4"
-        >
-          <View className="flex-row">
-            <Text className="font-LibreFranklinMedium text-xs text-dark-gray dark:text-light-gray mr-1">
-              No recuerdas tu contraseña?
-            </Text>
-            <Text className="font-LibreFranklinMedium text-xs text-accent underline decoration-accent">
-              Recuperar ahora
-            </Text>
-          </View>
-        </TouchableHighlight>
       </View>
-      <PrimaryButton text="Entrar a Zapp" style={'w-full'} onPress={() => loginUser(values, navigation)}/>
+      <PrimaryButton text="Crear cuenta" style={'w-full'} onPress={() => createUser(values, navigation)}/>
     </>
   )
 }

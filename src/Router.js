@@ -26,6 +26,7 @@ import { SignikaNegative_400Regular, SignikaNegative_500Medium, SignikaNegative_
 import { TabCollection, TabHome } from './assets/icons/icons-list'
 import { useColorScheme as useColorSchemeNativeWind } from 'nativewind'
 import useAuth from './utils/hooks/useAuth'
+import ConfirmEmailScreen from './screens/ConfirmEmail'
 
 const Tab = createBottomTabNavigator()
 const CollectionsStack = createNativeStackNavigator()
@@ -50,6 +51,7 @@ function AuthStackScreen () {
       <AuthStack.Screen name="Login" component={LoginScreen} options={{ headerShown: false }}/>
       <AuthStack.Screen name="SignIn" component={SignInScreen} options={{ headerShown: false }}/>
       <AuthStack.Screen name="SignUp" component={SignUpScreen} options={{ headerShown: false }}/>
+      <AuthStack.Screen name="ConfirmEmail" component={ConfirmEmailScreen} options={{ headerShown: false }}/>
     </AuthStack.Navigator>
   )
 }

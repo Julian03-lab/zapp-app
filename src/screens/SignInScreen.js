@@ -22,16 +22,16 @@ export default function SignInScreen ({ navigation }) {
       </View>
       <SignInForm />
       <TouchableHighlight
-        onPress={() => console.log('Pressed')}
+        onPress={() => navigation.navigate('SignUp')}
         activeOpacity={0.7}
         underlayColor="#transparent"
         className="my-3"
       >
         <View className='flex-row'>
-          <Text className="font-LibreFranklinMedium text-sm text-dark-gray dark:text-light-gray mr-1">
+          <Text className="font-LibreFranklinMedium text-base text-dark-gray dark:text-light-gray mr-1">
             No tienes cuenta?
           </Text>
-          <Text className="font-LibreFranklinMedium text-sm text-accent">
+          <Text className="font-LibreFranklinMedium text-base text-accent">
             Crear una nueva
           </Text>
         </View>

@@ -25,12 +25,12 @@ const Eye = (props) => (
 export default function PasswordReveal ({ value, togglePassword, color }) {
   return (
     <TouchableHighlight
-      activeOpacity={0.5}
+      activeOpacity={0.7}
       underlayColor="#transparent"
       onPress={() => togglePassword(!value)}
       className='self-start'
     >
-      <View className="flex-row items-center">
+      <View className="flex-row items-center px-2">
         {!value
           ? (
           <EyeOff
@@ -41,7 +41,7 @@ export default function PasswordReveal ({ value, togglePassword, color }) {
           <Eye color={color} />
             )}
 
-        <Text className="ml-1.5 font-LibreFranklinMedium text-sm dark:text-white text-black">
+        <Text className="ml-1.5 font-LibreFranklinMedium text-sm dark:text-white">
           {value ? 'Revelar' : 'Ocultar'} Contraseña
         </Text>
       </View>

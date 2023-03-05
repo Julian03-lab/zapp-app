@@ -6,15 +6,15 @@ export default function useAuth () {
   const [user, setUser] = useState()
 
   useEffect(() => {
-    const unsubscribeFromAuthStatuChanged = onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, (user) => {
       if (user) {
-        setUser(user)
+        if (user.emailVerified) {
+          setUser(user)
+        }
       } else {
         setUser(undefined)
       }
     })
-
-    return unsubscribeFromAuthStatuChanged
   }, [])
 
   return (
