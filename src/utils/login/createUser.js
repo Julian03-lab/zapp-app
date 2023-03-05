@@ -7,7 +7,6 @@ export default async function createUser ({ email, password, name }, navigation)
     await updateProfile(auth.currentUser, {
       displayName: name
     })
-    console.log(auth.currentUser)
     sendEmailVerification(auth.currentUser)
       .then(() => {
         navigation.navigate('ConfirmEmail')

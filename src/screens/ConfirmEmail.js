@@ -13,6 +13,7 @@ import { auth } from '../api/firebase/firebaseInit'
 import PrimaryButton from '../components/PrimaryButton'
 import sendVerificationEmail from '../utils/login/sendVerification'
 import SecondaryButton from '../components/SecondaryButton'
+import { signOut } from 'firebase/auth'
 
 function Timer ({ setAvailible }) {
   const [seconds, setSeconds] = useState(300)
@@ -43,7 +44,10 @@ export default function ConfirmEmailScreen ({ navigation }) {
   const verication = auth.currentUser.emailVerified
 
   useEffect(() => {
-    console.log('Verificado?', verication)
+    console.log('Verificado', verication)
+    return () => {
+      signOut(auth)
+    }
   }, [verication])
 
   return (
@@ -64,11 +68,7 @@ export default function ConfirmEmailScreen ({ navigation }) {
             Ya casi terminamos! Te enviamos un enlace de verificación a <Text className='underline'>{userEmail}</Text>. Debes verificar tu dirección de correo y podrás empezar a crear tus barajas.
           </Text>
         </View>
-        <PrimaryButton
-        text="Ya verifique mi mail. Iniciar Sesión"
-        onPress={() => navigation.navigate('SignIn')}
-      />
-        {availible ? <SecondaryButton text='Reenviar verificacion' onPress={() => sendVerificationEmail(setAvailible)} style={'w-full'}/> : <Timer setAvailible={setAvailible}/>}
+        {availible ? <PrimaryButton text='Reenviar verificacion' onPress={() => sendVerificationEmail(setAvailible)} style={'w-full'}/> : <Timer setAvailible={setAvailible}/>}
       </SafeAreaView>
   )
 }
