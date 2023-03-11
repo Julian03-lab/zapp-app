@@ -3,8 +3,11 @@ import React, { useState } from 'react'
 import ColorPicker from 'react-native-wheel-color-picker'
 import MediumCard from './MediumCard'
 import PrimaryButton from '../PrimaryButton'
+import createDeck from '../../utils/CollectionsDB/createDeck'
+import useAuth from '../../utils/hooks/useAuth'
 
 export default function CollectionForm () {
+  const user = useAuth()
   const [name, setName] = useState('')
   const [color, setColor] = useState('#fff')
 
@@ -13,7 +16,9 @@ export default function CollectionForm () {
       alert('Debes ingresar un nombre para la baraja')
       return
     }
-    console.log('submit', name, color)
+    createDeck(user?.uid, name, color).then(() => {
+      alert('Baraja creada con éxito')
+    })
   }
 
   return (
