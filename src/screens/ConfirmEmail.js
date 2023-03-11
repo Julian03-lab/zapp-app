@@ -2,8 +2,8 @@ import {
   View,
   SafeAreaView,
   StatusBar,
-  TouchableHighlight,
-  Text
+  Text,
+  TouchableHighlight
 } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import LoginHeader from '../components/Login/LoginHeader'
@@ -12,7 +12,6 @@ import GreenBlob from '../assets/illustrations/GreenBlob'
 import { auth } from '../api/firebase/firebaseInit'
 import PrimaryButton from '../components/PrimaryButton'
 import sendVerificationEmail from '../utils/login/sendVerification'
-import SecondaryButton from '../components/SecondaryButton'
 import { signOut } from 'firebase/auth'
 
 function Timer ({ setAvailible }) {
@@ -34,7 +33,19 @@ function Timer ({ setAvailible }) {
   const remainingSeconds = seconds % 60
 
   return (
-      <PrimaryButton style='w-full' text={`${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`}/>
+    <GhostButton
+      text={`${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`}
+    />
+  )
+}
+
+function GhostButton ({ text, onPress }) {
+  return (
+    <TouchableHighlight onPress={onPress}>
+      <Text className="mt-2 text-lg font-LibreFranklinBold text-accent text-center">
+        {text}
+      </Text>
+    </TouchableHighlight>
   )
 }
 
@@ -44,31 +55,47 @@ export default function ConfirmEmailScreen ({ navigation }) {
   const verication = auth.currentUser.emailVerified
 
   useEffect(() => {
-    console.log('Verificado', verication)
     return () => {
       signOut(auth)
     }
   }, [verication])
 
   return (
-      <SafeAreaView
-        className="bg-white dark:bg-black flex-1 w-full px-6 py-8 relative overflow-hidden items-center"
-        style={{ marginTop: StatusBar.currentHeight }}
-      >
-        <LoginHeader navigation={navigation} title={'Confirmar Correo'} />
-        <View className="py-8 relative">
-          <SentEmail />
-          <GreenBlob className={'absolute -z-10 bottom-12 -right-1'}/>
-        </View>
-        <View className="mb-8">
-          <Text className="text-4xl font-SignikaNegativeBold text-accent text-center my-2">
+    <SafeAreaView
+      className="bg-white dark:bg-black flex-1 w-full px-6 py-8 relative overflow-hidden items-center"
+      style={{ marginTop: StatusBar.currentHeight }}
+    >
+      <LoginHeader navigation={navigation} title={'Confirmar Correo'} />
+      <View className="py-8 relative">
+        <SentEmail />
+        <GreenBlob className={'absolute -z-10 bottom-12 -right-1'} />
+      </View>
+      <View className="mb-8">
+        <Text className="text-4xl font-SignikaNegativeBold text-accent text-center my-2">
           Solo falta verificar tu correo
-          </Text>
-          <Text className="text-base font-LibreFranklinRegular text-black dark:text-white text-center">
-            Ya casi terminamos! Te enviamos un enlace de verificación a <Text className='underline'>{userEmail}</Text>. Debes verificar tu dirección de correo y podrás empezar a crear tus barajas.
-          </Text>
-        </View>
-        {availible ? <PrimaryButton text='Reenviar verificacion' onPress={() => sendVerificationEmail(setAvailible)} style={'w-full'}/> : <Timer setAvailible={setAvailible}/>}
-      </SafeAreaView>
+        </Text>
+        <Text className="text-base font-LibreFranklinRegular text-black dark:text-white text-center">
+          Ya casi terminamos! Te enviamos un enlace de verificación a{' '}
+          <Text className="underline">{userEmail}</Text>. Debes verificar tu
+          dirección de correo y podrás empezar a crear tus barajas.
+        </Text>
+      </View>
+      <View className='w-full'>
+        <PrimaryButton
+          text="Continuar"
+          onPress={() => navigation.navigate('SignIn')}
+        />
+        {availible
+          ? (
+          <GhostButton
+            text="Reenviar verificacion"
+            onPress={() => sendVerificationEmail(setAvailible)}
+          />
+            )
+          : (
+          <Timer setAvailible={setAvailible} />
+            )}
+      </View>
+    </SafeAreaView>
   )
 }

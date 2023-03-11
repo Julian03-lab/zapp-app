@@ -27,6 +27,7 @@ import { TabCollection, TabHome } from './assets/icons/icons-list'
 import { useColorScheme as useColorSchemeNativeWind } from 'nativewind'
 import useAuth from './utils/hooks/useAuth'
 import ConfirmEmailScreen from './screens/ConfirmEmail'
+import NewCollection from './screens/NewCollection'
 
 const Tab = createBottomTabNavigator()
 const CollectionsStack = createNativeStackNavigator()
@@ -41,6 +42,7 @@ function MyStack () {
         options={{ headerShown: false }}
       />
       <CollectionsStack.Screen name="StudyScreen" component={StudyScreen} options={{ headerShown: false }}/>
+      <CollectionsStack.Screen name="NewCollection" component={NewCollection} options={{ headerShown: false }}/>
     </CollectionsStack.Navigator>
   )
 }

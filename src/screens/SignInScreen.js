@@ -21,12 +21,28 @@ export default function SignInScreen ({ navigation }) {
         <SignInGuy />
       </View>
       <SignInForm />
+      <View>
+      <TouchableHighlight
+          onPress={() => console.log('Pressed')}
+          activeOpacity={0.6}
+          underlayColor="#transparent"
+          className="my-1"
+          >
+          <View className="flex-row">
+            <Text className="font-LibreFranklinMedium text-xs text-dark-gray dark:text-light-gray mr-1">
+              No recuerdas tu contraseña?
+            </Text>
+            <Text className="font-LibreFranklinMedium text-xs text-accent underline decoration-accent">
+              Recuperar ahora
+            </Text>
+          </View>
+        </TouchableHighlight>
       <TouchableHighlight
         onPress={() => navigation.navigate('SignUp')}
         activeOpacity={0.7}
         underlayColor="#transparent"
         className="my-3"
-      >
+        >
         <View className='flex-row'>
           <Text className="font-LibreFranklinMedium text-base text-dark-gray dark:text-light-gray mr-1">
             No tienes cuenta?
@@ -36,6 +52,7 @@ export default function SignInScreen ({ navigation }) {
           </Text>
         </View>
       </TouchableHighlight>
+        </View>
     </SafeAreaView>
   )
 }

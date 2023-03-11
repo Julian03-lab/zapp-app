@@ -11,6 +11,7 @@ export default function LoginButtons () {
       <PrimaryButton
         text="Iniciar Sesión"
         onPress={() => navigation.navigate('SignIn')}
+        style={'mb-2'}
       />
       <SecondaryButton
         text="Registrarse"

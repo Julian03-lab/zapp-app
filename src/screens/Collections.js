@@ -11,7 +11,7 @@ export default function Collections ({ navigation }) {
       className="bg-white dark:bg-black flex-1 w-full px-4 py-8"
       style={{ marginTop: StatusBar.currentHeight }}
     >
-      <Title />
+      <Title navigation={navigation}/>
       <View className="flex-1">
         {userCollections.length > 0
           ? (

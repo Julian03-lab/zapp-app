@@ -1,4 +1,4 @@
-import { View, TextInput, TouchableHighlight, Text } from 'react-native'
+import { View, TextInput } from 'react-native'
 import React, { useState, useRef } from 'react'
 import { EmailIcon, PasswordIcon } from '../../../assets/icons/icons-list'
 import { useColorScheme } from 'nativewind'
@@ -78,21 +78,6 @@ export default function SignInForm () {
           togglePassword={setHidePassword}
           color={colorScheme === 'dark' ? 'white' : 'black'}
         />
-        <TouchableHighlight
-          onPress={() => console.log('Pressed')}
-          activeOpacity={0.6}
-          underlayColor="#transparent"
-          className="my-4"
-        >
-          <View className="flex-row">
-            <Text className="font-LibreFranklinMedium text-xs text-dark-gray dark:text-light-gray mr-1">
-              No recuerdas tu contraseña?
-            </Text>
-            <Text className="font-LibreFranklinMedium text-xs text-accent underline decoration-accent">
-              Recuperar ahora
-            </Text>
-          </View>
-        </TouchableHighlight>
       </View>
       <PrimaryButton text="Entrar a Zapp" style={'w-full'} onPress={() => loginUser(values, navigation)}/>
     </>

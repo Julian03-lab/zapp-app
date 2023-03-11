@@ -8,10 +8,10 @@ module.exports = {
     extend: {
       colors: {
         accent: '#8BC34A',
-        'dark-gray': '#333333',
+        'dark-gray': '#1A1A1A',
         'light-gray': '#F5F5F5',
         white: '#FFFFFF',
-        black: '#222222'
+        black: '#0F110D'
       },
       fontFamily: {
         LibreFranklinRegular: 'LibreFranklin_400Regular',

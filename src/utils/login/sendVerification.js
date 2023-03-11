@@ -21,7 +21,6 @@ const showAlert = (setAvailible) =>
 export default function sendVerificationEmail (setAvailible) {
   sendEmailVerification(auth.currentUser)
     .then(() => {
-      console.log('Email sent')
       showAlert(setAvailible)
     })
     .catch((error) => {

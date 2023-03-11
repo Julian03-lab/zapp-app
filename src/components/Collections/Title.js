@@ -1,14 +1,16 @@
-import { View, Text } from 'react-native'
+import { View, Text, TouchableHighlight } from 'react-native'
 import React from 'react'
 import { FontAwesome } from '@expo/vector-icons'
 
-export default function Title () {
+export default function Title ({ navigation }) {
   return (
     <View className='w-full justify-between flex-row items-center mb-2'>
       <Text style={{ fontFamily: 'SignikaNegative_700Bold' }} className="text-dark-gray dark:text-white text-4xl">
           Barajas
         </Text>
-        <FontAwesome name="plus" size={32} color="#8BC34A" />
+        <TouchableHighlight onPress={() => navigation.navigate('NewCollection')}>
+          <FontAwesome name="plus" size={32} color="#8BC34A" />
+        </TouchableHighlight>
     </View>
   )
 }
