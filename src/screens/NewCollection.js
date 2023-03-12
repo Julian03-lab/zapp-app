@@ -12,7 +12,7 @@ export default function NewCollection ({ navigation }) {
     >
       <GoBack navigation={navigation} text={'NUEVA BARAJA'}/>
       <NewCollectionGuy width={276} height={188}/>
-      <CollectionForm/>
+      <CollectionForm navigation={navigation}/>
     </SafeAreaView>
   )
 }

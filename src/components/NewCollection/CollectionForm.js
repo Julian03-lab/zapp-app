@@ -6,7 +6,7 @@ import PrimaryButton from '../PrimaryButton'
 import createDeck from '../../utils/CollectionsDB/createDeck'
 import useAuth from '../../utils/hooks/useAuth'
 
-export default function CollectionForm () {
+export default function CollectionForm ({ navigation }) {
   const user = useAuth()
   const [name, setName] = useState('')
   const [color, setColor] = useState('#fff')
@@ -17,7 +17,9 @@ export default function CollectionForm () {
       return
     }
     createDeck(user?.uid, name, color).then(() => {
-      alert('Baraja creada con éxito')
+      navigation.navigate('CollectionsStack')
+    }).catch((error) => {
+      alert(error)
     })
   }
 
