@@ -2,8 +2,7 @@ import {
   View,
   SafeAreaView,
   StatusBar,
-  Text,
-  TouchableHighlight
+  Text
 } from 'react-native'
 import React, { useState, useEffect } from 'react'
 import LoginHeader from '../components/Login/LoginHeader'
@@ -13,6 +12,7 @@ import { auth } from '../api/firebase/firebaseInit'
 import PrimaryButton from '../components/PrimaryButton'
 import sendVerificationEmail from '../utils/login/sendVerification'
 import { signOut } from 'firebase/auth'
+import GhostButton from '../components/GhostButton'
 
 function Timer ({ setAvailible }) {
   const [seconds, setSeconds] = useState(300)
@@ -36,16 +36,6 @@ function Timer ({ setAvailible }) {
     <GhostButton
       text={`${minutes}:${remainingSeconds < 10 ? '0' : ''}${remainingSeconds}`}
     />
-  )
-}
-
-function GhostButton ({ text, onPress }) {
-  return (
-    <TouchableHighlight onPress={onPress}>
-      <Text className="mt-2 text-lg font-LibreFranklinBold text-accent text-center">
-        {text}
-      </Text>
-    </TouchableHighlight>
   )
 }
 

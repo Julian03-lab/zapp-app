@@ -7,11 +7,10 @@ import { useNavigation } from '@react-navigation/native'
 export default function LoginButtons () {
   const navigation = useNavigation()
   return (
-    <View>
+    <View style={{ gap: 6 }}>
       <PrimaryButton
         text="Iniciar Sesión"
         onPress={() => navigation.navigate('SignIn')}
-        style={'mb-2'}
       />
       <SecondaryButton
         text="Registrarse"

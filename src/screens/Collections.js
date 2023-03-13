@@ -23,16 +23,12 @@ export default function Collections ({ navigation }) {
     >
       <Title navigation={navigation} />
       <View className="flex-1">
-        {userCollections !== null
-          ? (<FlatList
+        <FlatList
           data={userCollections}
-          renderItem={({ item }) => (
-            <IndividualCollection name={item.name} />
-          )}
+          renderItem={({ item }) => <IndividualCollection name={item.name} color={item.color} id={item.id}/>}
           keyExtractor={(item) => item.id}
-        />)
-          : (<NoCollections/>)}
-
+          ListEmptyComponent={<NoCollections navigation={navigation}/>}
+        />
       </View>
     </SafeAreaView>
   )

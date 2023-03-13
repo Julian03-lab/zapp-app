@@ -12,8 +12,7 @@ export default async function createDeck (uid, name, color) {
   const collectionRef = collection(db, 'users', uid, 'decks')
 
   try {
-    const docRef = await addDoc(collectionRef, data)
-    console.log('Document written with ID: ', docRef.id)
+    await addDoc(collectionRef, data)
   } catch (error) {
     console.log(error)
   }

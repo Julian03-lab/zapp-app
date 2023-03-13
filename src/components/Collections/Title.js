@@ -1,6 +1,6 @@
 import { View, Text, TouchableHighlight } from 'react-native'
 import React from 'react'
-import { FontAwesome } from '@expo/vector-icons'
+import { AntDesign } from '@expo/vector-icons'
 
 export default function Title ({ navigation }) {
   return (
@@ -9,7 +9,7 @@ export default function Title ({ navigation }) {
           Barajas
         </Text>
         <TouchableHighlight onPress={() => navigation.navigate('NewCollection')}>
-          <FontAwesome name="plus" size={32} color="#8BC34A" />
+        <AntDesign name="plus" size={32} color="#8BC34A" />
         </TouchableHighlight>
     </View>
   )

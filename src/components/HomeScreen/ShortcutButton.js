@@ -21,7 +21,7 @@ export default function ShortcutButton ({ icon, text, onPress }) {
   return (
     <View className='flex-1 h-20 relative'>
       <TouchableOpacity
-        className="px-2 py-3 dark:bg-dark-gray rounded-xl flex-1  justify-center"
+        className="px-2 py-3 bg-light-gray dark:bg-dark-gray rounded-xl flex-1  justify-center"
         onPress={onPress}
         activeOpacity={0.9}
       >
